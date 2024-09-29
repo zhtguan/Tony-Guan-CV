@@ -1,0 +1,378 @@
+%
+%Academic CV LaTeX Template
+% Author: Dubasi Pavan Kumar
+% LinkedIn: https://www.linkedin.com/in/im-pavankumar/
+% License: MIT
+%
+% For errors, suggestions, or improvements, please contact:
+% Email: pavankumard.pg19.ma@nitp.ac.in
+%
+
+
+
+\documentclass[a4paper,11pt]{article}
+
+% Package imports
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
+% \usepackage{xeCJK}
+% Color definitions
+\definecolor{darkblue}{RGB}{0,0,139}
+
+% Page layout
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
+\setlength{\footskip}{5pt} % Addressing fancyhdr warning
+
+% Hyperlink setup (moved after fancyhdr to address warning)
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=darkblue,
+    urlcolor=darkblue,
+}
+
+% Custom box settings
+\usepackage[most]{tcolorbox}
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=4pt,
+    arc=0pt,outer arc=0pt,
+}
+
+% URL style
+\urlstyle{same}
+
+% Text alignment
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        {\textbf{#1}} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.5mm]}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+
+% Commands for icon sizing and positioning
+\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
+\newcommand{\ieeeicon}[1]{\raisebox{-0.3em}{\resizebox{!}{1.3em}{#1}}}
+
+% Font options
+\newcommand{\headerfonti}{\fontfamily{phv}\selectfont} % Helvetica-like (similar to Arial/Calibri)
+\newcommand{\headerfontii}{\fontfamily{ptm}\selectfont} % Times-like (similar to Times New Roman)
+\newcommand{\headerfontiii}{\fontfamily{ppl}\selectfont} % Palatino (elegant serif)
+\newcommand{\headerfontiv}{\fontfamily{pbk}\selectfont} % Bookman (readable serif)
+\newcommand{\headerfontv}{\fontfamily{pag}\selectfont} % Avant Garde-like (similar to Trebuchet MS)
+\newcommand{\headerfontvi}{\fontfamily{cmss}\selectfont} % Computer Modern Sans Serif
+\newcommand{\headerfontvii}{\fontfamily{qhv}\selectfont} % Quasi-Helvetica (another Arial/Calibri alternative)
+\newcommand{\headerfontviii}{\fontfamily{qpl}\selectfont} % Quasi-Palatino (another elegant serif option)
+\newcommand{\headerfontix}{\fontfamily{qtm}\selectfont} % Quasi-Times (another Times New Roman alternative)
+\newcommand{\headerfontx}{\fontfamily{bch}\selectfont} % Charter (clean serif font)
+
+\begin{document}
+\headerfontiii
+
+% Header
+\begin{center}
+    {\Huge\textbf{Zhongtao(Tony) Guan}}
+\end{center}
+\vspace{-4mm}
+\begin{center}
+    \small{
+    +1-617-784-6900 | 
+    \href{mailto:zhtguan@mit.edu}{zhtguan@mit.edu}|
+    \socialicon{\faLinkedin} \href{https://www.linkedin.com/in/zhongtao-guan-220766287/}{Linkedin} | 
+    \socialicon{\faGithub} \href{https://github.com/DoZz-M}{Github}
+    }
+\end{center}
+\vspace{-4mm}
+
+\section{\textbf{Education and Research Experience}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{\href{https://shanghaitech.edu.cn}{ShanghaiTech University}}{Shanghai, China}
+{Bachelor of Engineering, Electronic Information Engineering}{Sep. 2021 - Present}
+\resumeItemListStart
+\item GPA: 3.80/4.00; Ranking 3/56
+\item Core courses:  Introduction to Control, Signals and Systems, Electromagnetic, Power Electronics
+% \item  Honors: Outstanding Teaching assistant( Head TA of Electric Circuit); Excellent Student
+\item  Scholarship: Undergrad. National Exchange Scholarship; International Conference Scholarship
+\resumeItemListEnd
+
+\resumeSubheading
+{\href{https://mit.edu}{Massachusetts Institute of Technology}}{Cambridge, Massachusetts, U.S.}
+{Special Student Program in EECS}{Feb. 2024 - May.2024}
+\resumeItemListStart
+\item GPA: 5.00/5.00
+\item Core courses:  Underactuated Robotics, Nonlinear Control
+\resumeItemListEnd
+
+\resumeSubheading
+{\href{https://mit.edu}{Massachusetts Institute of Technology}}{Cambridge, Massachusetts, U.S.}
+{Undergraduate Visiting Student in EECS}{July. 2024 - Present}
+\resumeItemListStart
+\item Advisor: Kevin Chen
+\resumeItemListEnd
+\vspace{-2mm}
+
+\section{\textbf{Publications} \hspace*{\fill} \textcolor{darkblue}{\scriptsize C=Conference, J=Journal, S=In Submission, +=equal contribution}}
+\vspace{0.2mm}
+\small{
+\begin{enumerate}[leftmargin=*, labelsep=0.5em, align=left, widest={[\textbf{S.1}]}, itemindent=0em, label={\textbf{[\arabic*]}]}]
+
+\item[\textbf{[S.1]}] Yi-Hsuan Hsiao$^+$, Songnan Bai$^+$, \textbf{Zhongtao Guan$^+$}, et al. \textbf{Hybrid locomotion at the insect scale – combined flying and jumping for enhanced efficiency and efficacy}. Manuscript submitted for publication in \textit{ Nature Machine Intelligence}.\label{S.1}
+
+\item[\textbf{[C.1]}] \textbf{Zhongtao Guan}, et al. \href{https://github.com/horychen/CuryLegWebotSimulation}{\textbf{Preliminary Result of Cury: A Backdrivable Leg Design using Linear Actuators}}. In \textit{IEEE/RSJ International Conference on Intelligent Robots and Systems(IROS), 2024}. \label{C.1}
+
+\item[\textbf{[C.2]}] \textbf{Zhongtao Guan}, et al. \href{https://ieeexplore.ieee.org/abstract/document/10253208}{\textbf{Accurate Single-Ended Fault Location for Cable-OHL Hybrid Transmission Lines}}. In \textit{Power and Energy Society General Meeting (PESGM), 2023}. \label{C.2}
+
+\item[\textbf{[C.3]}] Jiayu Yang, Yu Liu, Kang Yue, \textbf{Zhongtao Guan}, et al. \href{https://ieeexplore.ieee.org/abstract/document/10253748}{\textbf{Closed-Form Solutions of Mutual Inductance and Load for LCC-S Wireless Power Transfer Systems}}. In \textit{3rd IEEE International Conference on Industrial Electronics for Sustainable Energy Systems, 2023}. \label{C.3}
+
+\item[\textbf{[C.4]}] Mengzhao Duan, Yu Liu, Ze Liu, Xinchen Zou and \textbf{Zhongtao Guan}. \href{https://ieeexplore.ieee.org/abstract/document/10252886}{\textbf{A Group of Single-Ended Time-Domain Line Fault Location Methods Using Breaker Operation Information}}. In \textit{IEEE Power and Energy Society General Meeting (PESGM), 2023}.\label{C.4}
+\end{enumerate}
+}
+
+\section{\textbf{Projects}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeProject
+  {Implicit Regularization and Dynamic Gain in Nonlinear Control}
+  {Advisor: Prof. Jiahao Chen}
+  {Sep. 2023- Jan. 2024}
+    {{}}
+\resumeItemListStart
+ \item Place Holder
+ \item Place Holder
+ \item Place Holder
+ \item Place Holder
+ \item Place Holder
+ \item Place Holder
+ 
+\resumeItemListEnd
+
+\resumeProject
+  {\textbf{Sensor Autonomy for Insect-Scale Robots}}
+  {Advisor: Prof. Kevin Chen}
+  {July. 2024- Present}
+    {{}}
+\resumeItemListStart
+ \item Place Holder
+ \item Place Holder
+ \item Place Holder
+ \item Place Holder
+ \item Place Holder
+ 
+\resumeItemListEnd
+
+\resumeProject
+  {\textbf{Hybrid Locomotion at Insect Scale }}
+  {Advisor: Prof. Kevin Chen}
+  {Jan. 2024- Sep. 2024}
+    {{}}
+\resumeItemListStart
+  % \item [Abilities] *Abilities, including, overcoming tall obstacles, performing somersaults between consecutive jumps, 
+  % \item [Terrian] traversing challenging surfaces such as soil, slippery glass, rotating surfaces, and quadrotor platform.
+  % \item [Resilience] \textcolor{red}{Properties} collision resilience under large impact.
+
+  \item Presented a sub-gram flapping-wing passive hopper at insect scale using soft actuator.
+  \item Demonstrated capabilities in overcoming obstacles, navigating challenging terrains, and exhibiting high agility. 
+    \item Trajectory optimization and online NLMPC are used for complex task such as fast dynamic between slopes.
+  \item Contributed to controller design, experiments and data analysis. 
+  \item This work is submitted to a journal: [S.1].
+\resumeItemListEnd
+% \newpage
+\resumeProject
+  {\textbf{A Backdrivable Leg Design Using Linear Actuators}}
+  {Advisor: Prof. Jiahao Chen}
+  {Aug. 2023 - Jan. 2024}
+  {{}[\href{https://github.com/horychen/CuryLegWebotSimulation}{\textcolor{darkblue}{\faGithub}}]}
+   % \item \textcolor{red}{*Designed the completed hardware pipeline, including four-bar mechanisms, AC motors, and its drive;} Utilized multi-objective optimization for parameter selection
+% \item Designed  AC motors,drives, fundamental controller and parameters selection of four-bar linkages using Utilized multi-objective optimization(MOO).
+  % \item Acted as the project leader; Responsible for the design, fabrication, and assembly of mechanical systems, as well as contributing to the design, testing, and control of motors and drive systems.
+\resumeItemListStart
+ \item Developed a backdrivable 2-DoF leg prototype for walking and jumping.
+    \item Contributed to the design of electronic components, including a highly integrated AC motor drive.
+    \item Reduced the number of joint encoders through optimized mechanical design and electrical integration.
+    \item Built a simulation environment using the Webots simulator for closed-loop chain dynamics.
+    \item Acted as the project leader; responsible for mechatronics design and simulation.
+    \item This work has been accepted as a conference paper: [C.1].
+\resumeItemListEnd
+
+\resumeProject
+  {Fault Location of Power Systems}
+  {Advisor: Prof. Yu Liu}
+  {Jun. 2022 - Jan. 2023}
+  {{}}
+\resumeItemListStart
+  % \item HOW1 \& ROLE \& IMPACT(Paper1)
+  %   1: 对输电线进行了更精确的建模，并且对Eriksson Method进行了拓展使其可以被部署
+  %   2: 使用完全分布参数模型，解决了多解问题，在高/低阻故障下有很好的定位精度
+  %   This work is accepted as an conference paper [C.2]
+  % \item HOW2 \& ROLE \& IMPACT(Paper2) Introduced the breaker operation information to the single-ended time-domain fault location problem on AC transmission line, 暴打之前所有经典方法. This work is accepted as an conference paper [C.4]
+\item  Proposed methods for fault location on hybrid or purely overhead line power system.
+\item Utilized fully distributed line model for accurate locating, while modified Eriksson method for analytical method .
+\item Introduced breaker operation information for fault location of pure overhead-line power system.
+\item  Contributed to idea, methodology, experiments for [C.2]; proof reading and discussion for [C.4]. 
+\item These works are accepted as conference papers [C.2], [C.4].
+\resumeItemListEnd
+
+\resumeProject
+  {Design and Control of Inverter}
+  {Advisor: Prof. Yu Liu}
+  {Jan. 2023 - Aug. 2023}
+  {{}}
+\resumeItemListStart
+  \item Proposed analytical solutions of mutual inductance and load resistance for the LCC-S WPT system, without communication from the secondary side.
+  \item Designed and controlled a three-phase inverter for grid-connected photovoltaic systems.
+  % \item Included knowledge of device selection, embedded system, SVPWM and PLL.
+  \item This work is accepted as a conference paper: [C.3] %and National Undergraduate Electronic Design Contest.
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\section{\textbf{Awards}}
+\resumeProject
+  {Outstanding Teaching Assistant}
+  {ShanghaiTech University, school of information and technology}
+  {2023}
+  {{}}
+\resumeItemListStart
+  \item Acted as head TA  Electric Circuit.
+  \item Coordinated the workload of TAs, Recorded the class, lectured discussion/review session, graded homework.
+\resumeItemListEnd
+
+\resumeProject
+  {RoboMaster University Championship }
+  {RoboMaster}
+  {2022}
+  {{}}
+\resumeItemListStart
+  \item Won 2nd Prize in Shanghai division, 3rd in national division 
+  \item Acted as group leader; contributed to mechanical design.
+
+\resumeItemListEnd
+
+\resumeProject
+  {National Undergraduate Electronic Design Contest}
+  {Shanghai Municipal Education Commission }
+  {2023}
+  {{}}
+\resumeItemListStart
+  \item Won 2nd Prize in Shanghai division
+  \item Acted as group leader; contributed to inverter design and control.
+    \item Included knowledge of device selection, embedded system, SVPWM and PLL.
+\resumeItemListEnd
+
+\section{\textbf{Skills and Others }}
+\vspace{-0.4mm}
+ \resumeHeadingSkillStart
+  \resumeSubItem{Programming Languages: }
+    {Python, C/C++, Julia, Matlab}
+    \resumeSubItem{Toolkit: }
+    {Simulink, Altuim Designer, KiCAD, Solidworks, \LaTeX}
+    \resumeSubItem{Teaching: }{Electric Circuit, Introduction to Control Project}
+    \resumeSubItem{\textcolor{red}{Research}: }{}
+ \resumeHeadingSkillEnd
+ 
+\resumeSubHeadingListEnd
+
+\section{\textbf{References}}
+\vspace{-0.2mm}
+\resumeHeadingSkillStart
+\resumeSubItem{Research Supervisor: }{\href{smrl.mit.edu}{Kevin Chen}, Associate Professor Without Tenure, MIT, Contact: \href{mailto:yufengc@mit.edu}{Email}}
+\resumeSubItem{Research Supervisor: }{\href{https://faculty.sist.shanghaitech.edu.cn/chenjh/}{Jiahao Chen}, Assistant Professor, ShanghaiTech, Contact:\href{mailto:chenjh2@shanghaitech.edu.cn}{Email}}
+\resumeSubItem{Research Supervisor: }{\href{https://pspal.shanghaitech.edu.cn/people.html}{Yu Liu}, Associate Professor, ShanghaiTech, Contact: \href{mailto:liuyu@shanghaitech.edu.cn}{Email}}
+ \resumeHeadingSkillEnd
+\end{document}
